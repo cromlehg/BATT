@@ -3,8 +3,8 @@
 # Blockchain Agro Trading Token smart contract
 
 * _Standard_                                                                            : [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
-* _[Name](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#name)_            : BUILD
-* _[Ticker](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#symbol)_        : BUILD
+* _[Name](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#name)_            : Blockchain Agro Trading Token
+* _[Ticker](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#symbol)_        : BATT
 * _[Decimals](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#decimals)_    : 18
 * _Emission_                                                                            : Mintable
 * _Crowdsales_                                                                          : 2
@@ -68,6 +68,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * Manually mint tokens by owner or sale agent at any time until token minting finished. 
 * Manually mint tokens in ether value by owner or sale agent at corresponding sale contract during current sale processing.  
 * Softcap ETH available after softcap reached
+* 1 ETH to 0x1D0B575b48a6667FD8E59Da3b01a49c33005d2F1 after softcap
 * 50% ETH over softcap available after ITO finished
 * Other 50% over softcap quarterly available untill 2019
 
