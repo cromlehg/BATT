@@ -84,8 +84,8 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Wallet_                      : 0x0fc0b9f68DCc12B72203e579d427d1ddf007e464
 
 ##### Bonus system
-* First 30 000 000 - 100% discount
-* Other - 50% discount
+* First 30 000 000 + 100% bonus
+* Other + 50% bonus
 
 #### ITO
 * _Minimal insvested limit_     : 1 ETH
