@@ -1,4 +1,4 @@
-![Blockchain Agro Trading Token](logo.png "Blockchain Agro Trading Token")
+![Blockchain Agro Trading Token](logo.svg "Blockchain Agro Trading Token")
 
 # Blockchain Agro Trading Token smart contract
 
@@ -54,10 +54,10 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Main network configuration
 
-* _Bounty tokens wallet_        : 
-* _Advisors tokens wallet_      : 
-* _Founders tokens wallet_      : 
-* _Contracts manager_           : 
+* _Bounty tokens wallet_        : 0x31Dba1B0b92fa23Eec30e2fF169dc7Cc05eEE915
+* _Advisors tokens wallet_      : 0x8c76033Dedd13FD386F12787Ab4973BcbD1de2A8
+* _Founders tokens wallet_      : 0x7Ae3c0DdaC135D69cA8E04d05559cd42822ecf14
+* _Contracts manager_           : 0x529E6B0e82EF632F070D997dd50C35aAa939cB37
 
 ### Links
 1. _Token_ -
@@ -80,7 +80,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Hardcap_                     : 16 666 ETH
 * _Start_                       : 
 * _Period_                      : 30 days
-* _Wallet_                      : 
+* _Wallet_                      : 0x0fc0b9f68DCc12B72203e579d427d1ddf007e464
 
 ##### Bonus system
 * First 30 000 000 - 100% discount

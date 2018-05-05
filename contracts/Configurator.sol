@@ -19,7 +19,7 @@ contract Configurator is Ownable {
 
   function deploy() public onlyOwner {
 
-    address manager = 0x66C1833F667eAE8ea1890560e009F139A680F939;
+    address manager = 0x529E6B0e82EF632F070D997dd50C35aAa939cB37;
 
     token = new Token();
     specialWallet = new SpecialWallet();
@@ -33,7 +33,7 @@ contract Configurator is Ownable {
     commonConfigure(preITO);
     commonConfigure(ito);
 
-    preITO.setWallet(0xB53E3f252fBCD041e46Aad82CFaEe326E04d1396);
+    preITO.setWallet(0x0fc0b9f68DCc12B72203e579d427d1ddf007e464);
     preITO.setStart(1524441600);
     preITO.setSoftcap(1000000000000000000000);
     preITO.setHardcap(16666000000000000000000);
@@ -46,9 +46,9 @@ contract Configurator is Ownable {
     ito.setStart(1527206400);
     ito.setHardcap(40000000000000000000000);
 
-    ito.addWallet(0x3180e7B6E726B23B1d18D9963bDe3264f5107aef, 1);
-    ito.addWallet(0x36A8b67fe7800Cd169Fd46Cd75824DC016a54d13, 1);
-    ito.addWallet(0xDf9CAAE51eED1F23B4ae9AeCDbdeb926252eFFC4, 8);
+    ito.addWallet(0x8c76033Dedd13FD386F12787Ab4973BcbD1de2A8, 1);
+    ito.addWallet(0x31Dba1B0b92fa23Eec30e2fF169dc7Cc05eEE915, 1);
+    ito.addWallet(0x7Ae3c0DdaC135D69cA8E04d05559cd42822ecf14, 8);
 
     preITO.setNextSaleAgent(ito);
 
