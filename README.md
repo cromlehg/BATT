@@ -91,6 +91,5 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Base price_                  : 1 ETH = 30 000 Tokens
 * _Hardcap_                     : 40 000 ETH
 * _Start_                       : 
-* _Period_                      : days
-* _Wallet_                      : 
+* _Period_                      : 30 days
 
