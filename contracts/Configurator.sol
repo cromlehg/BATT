@@ -36,7 +36,7 @@ contract Configurator is Ownable {
     preITO.setWallet(0x0fc0b9f68DCc12B72203e579d427d1ddf007e464);
     preITO.setStart(1524441600);
     preITO.setSoftcap(1000000000000000000000);
-    preITO.setHardcap(16666000000000000000000);
+    preITO.setHardcap(33366000000000000000000);
     preITO.setFirstBonus(100);
     preITO.setFirstBonusTokensLimit(30000000000000000000000000);
     preITO.setSecondBonus(50);
@@ -44,7 +44,7 @@ contract Configurator is Ownable {
     token.setSaleAgent(preITO);
 
     ito.setStart(1527206400);
-    ito.setHardcap(40000000000000000000000);
+    ito.setHardcap(23000000000000000000000);
 
     ito.addWallet(0x8c76033Dedd13FD386F12787Ab4973BcbD1de2A8, 1);
     ito.addWallet(0x31Dba1B0b92fa23Eec30e2fF169dc7Cc05eEE915, 1);

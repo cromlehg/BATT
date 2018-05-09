@@ -78,7 +78,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Minimal insvested limit_     : 1 ETH
 * _Base price_                  : 1 ETH = 30 000 Tokens
 * _Softcap_                     : 1000 ETH
-* _Hardcap_                     : 16 666 ETH
+* _Hardcap_                     : 33 366 ETH
 * _Start_                       : 
 * _Period_                      : 30 days
 * _Wallet_                      : 0x0fc0b9f68DCc12B72203e579d427d1ddf007e464
@@ -90,7 +90,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 #### ITO
 * _Minimal insvested limit_     : 1 ETH
 * _Base price_                  : 1 ETH = 30 000 Tokens
-* _Hardcap_                     : 40 000 ETH
+* _Hardcap_                     : 23 000 ETH
 * _Start_                       : 
 * _Period_                      : 30 days
 
