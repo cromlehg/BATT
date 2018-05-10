@@ -11,9 +11,10 @@ const should = require('chai')
   .use(require('chai-bignumber')(web3.BigNumber))
   .should();
 
-export default function (Token, Crowdsale, wallets) {
+export default function (Token, Crowdsale, SpecialWallet, wallets) {
   let token;
   let crowdsale;
+  let specialwallet;
 
   before(async function () {
     // Advance to the next block to correctly read time in the solidity "now" function interpreted by testrpc
@@ -23,6 +24,7 @@ export default function (Token, Crowdsale, wallets) {
   beforeEach(async function () {
     token = await Token.new();
     crowdsale = await Crowdsale.new();
+    specialwallet = await SpecialWallet.new();
     await token.setSaleAgent(crowdsale.address);
     await crowdsale.setToken(token.address);
     await crowdsale.setStart(this.start);
@@ -33,6 +35,10 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
     await crowdsale.setWallet(this.wallet);
     await crowdsale.setPercentRate(this.PercentRate);
+    await crowdsale.setSpecialWallet(specialwallet.address);
+    await specialwallet.setAvailableAfterStart(50);
+    await specialwallet.setEndDate(1546300800);
+    await specialwallet.transferOwnership(crowdsale.address);
   });
 
   it('crowdsale should be a saleAgent for token', async function () {
@@ -73,4 +79,5 @@ export default function (Token, Crowdsale, wallets) {
     await increaseTimeTo(this.afterEnd);
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.rejectedWith(EVMRevert);
   });
+  
 }

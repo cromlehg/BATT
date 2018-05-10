@@ -21,7 +21,7 @@ contract('Configurator integration test', function (accounts) {
   let preito;
   let ito;
 
-  const manager = '0x66C1833F667eAE8ea1890560e009F139A680F939';
+  const manager = '0x529E6B0e82EF632F070D997dd50C35aAa939cB37';
 
   before(async function () {
     // Advance to the next block to correctly read time in the solidity "now" function interpreted by testrpc
@@ -62,46 +62,42 @@ contract('Configurator integration test', function (accounts) {
 
   it ('preTCO and ITO should have price as described in README', async function () {
     const preitoPrice = await preito.price();
-    preitoPrice.should.bignumber.equal(tokens(6650));
+    preitoPrice.should.bignumber.equal(tokens(30000));
     const itoPrice = await ito.price();
-    itoPrice.should.bignumber.equal(tokens(5000));
+    itoPrice.should.bignumber.equal(tokens(30000));
   });
 
   it ('preITO should have softcap as described in README', async function () {
     const preitoSoftcap = await preito.softcap();
-    preitoSoftcap.should.bignumber.equal(ether(3500));
+    preitoSoftcap.should.bignumber.equal(ether(1000));
   });
 
   it ('preITO and ITO should have hardcap as described in README', async function () {
     const preitoHardcap = await preito.hardcap();
-    preitoHardcap.should.bignumber.equal(ether(12000));
+    preitoHardcap.should.bignumber.equal(ether(33366));
     const itoHardcap = await ito.hardcap();
     itoHardcap.should.bignumber.equal(ether(23000));
   });
 
   it ('preITO and ITO should have minimal insvested limit as described in README', async function () {
     const preitoMinInvest = await ito.minInvestedLimit();
-    preitoMinInvest.should.bignumber.equal(ether(0.1));
+    preitoMinInvest.should.bignumber.equal(ether(1));
     const itoMinInvest = await ito.minInvestedLimit();
-    itoMinInvest.should.bignumber.equal(ether(0.1));
+    itoMinInvest.should.bignumber.equal(ether(1));
   });
 
-  it ('preITO and ITO should have wallets as described in README', async function () {
+  it ('preITO should have wallets as described in README', async function () {
     const preitoWallet = await preito.wallet();
-    preitoWallet.should.bignumber.equal('0xB53E3f252fBCD041e46Aad82CFaEe326E04d1396');
-    const itoWallet = await ito.wallet();
-    itoWallet.should.bignumber.equal('0x8f1C4E049907Fa4329dAC9c504f4013620Fa39c9');
+    preitoWallet.should.bignumber.equal('0x0fc0b9f68DCc12B72203e579d427d1ddf007e464');
   });
 
-  it ('bounty, advisors, founders, company wallets should be as described in README', async function () {
+  it ('bounty, advisors, founders wallets should be as described in README', async function () {
     const bountyWallet = await ito.wallets(0);
-    bountyWallet.should.bignumber.equal('0x3180e7B6E726B23B1d18D9963bDe3264f5107aef');
+    bountyWallet.should.bignumber.equal('0x8c76033Dedd13FD386F12787Ab4973BcbD1de2A8');
     const advisorsWallet = await ito.wallets(1);
-    advisorsWallet.should.bignumber.equal('0x36A8b67fe7800Cd169Fd46Cd75824DC016a54d13');
+    advisorsWallet.should.bignumber.equal('0x31Dba1B0b92fa23Eec30e2fF169dc7Cc05eEE915');
     const foundersWallet = await ito.wallets(2);
-    foundersWallet.should.bignumber.equal('0xDf9CAAE51eED1F23B4ae9AeCDbdeb926252eFFC4');
-    const companyWallet = await ito.wallets(3);
-    companyWallet.should.bignumber.equal('0x7D648BcAbf05CEf119C9a11b8E05756a41Bd29Ad');
+    foundersWallet.should.bignumber.equal('0x7Ae3c0DdaC135D69cA8E04d05559cd42822ecf14');
   });
 
 });

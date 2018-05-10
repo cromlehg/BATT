@@ -10,36 +10,37 @@ import additional from './preito/additional';
 
 const token = artifacts.require('Token.sol');
 const crowdsale = artifacts.require('PreITO.sol');
+const specialwallet = artifacts.require('SpecialWallet.sol');
 
 contract('PreITO - common test', function (accounts) {
   before(config);
-  common(token, crowdsale, accounts);
+  common(token, crowdsale, specialwallet, accounts);
 });
 
 contract('PreITO - capped crowdsale test', function (accounts) {
   before(config);
-  capped(token, crowdsale, accounts);
+  capped(token, crowdsale, specialwallet, accounts);
 });
 
 contract('PreITO - refundable features test', function (accounts) {
   before(config);
-  refundable(token, crowdsale, accounts);
+  refundable(token, crowdsale, specialwallet, accounts);
 });
 
 contract('PreITO - additional features test', function (accounts) {
   before(config);
-  additional(token, crowdsale, accounts);
+  additional(token, crowdsale, specialwallet, accounts);
 });
 
 function config() {
   // variables list based on info from README
-  this.start = unixTime('30 Apr 2018 00:00:00 GMT');
-  this.period = 42;
-  this.price = tokens(6650);
-  this.softcap = ether(3500);
-  this.hardcap = ether(12000);
-  this.minInvestedLimit = ether(0.1);
-  this.wallet = '0xB53E3f252fBCD041e46Aad82CFaEe326E04d1396';
+  this.start = unixTime('30 May 2018 00:00:00 GMT');
+  this.period = 30;
+  this.price = tokens(30000);
+  this.softcap = ether(1000);
+  this.hardcap = ether(33366);
+  this.minInvestedLimit = ether(1);
+  this.wallet = '0x0fc0b9f68DCc12B72203e579d427d1ddf007e464';
   this.PercentRate = 100;
 
   // variables for additional testing convinience

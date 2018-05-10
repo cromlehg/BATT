@@ -10,9 +10,10 @@ const should = require('chai')
   .use(require('chai-bignumber')(web3.BigNumber))
   .should();
 
-export default function (Token, Crowdsale, wallets) {
+export default function (Token, Crowdsale, SpecialWallet, wallets) {
   let token;
   let crowdsale;
+  let specialwallet;
 
   before(async function () {
     // Advance to the next block to correctly read time in the solidity "now" function interpreted by testrpc
@@ -22,25 +23,22 @@ export default function (Token, Crowdsale, wallets) {
   beforeEach(async function () {
     token = await Token.new();
     crowdsale = await Crowdsale.new();
+    specialwallet = await SpecialWallet.new();
     await token.setSaleAgent(crowdsale.address);
     await crowdsale.setToken(token.address);
     await crowdsale.setStart(latestTime());
+    await crowdsale.setPeriod(this.period);
     await crowdsale.setPrice(this.price);
     await crowdsale.setHardcap(this.hardcap);
-    await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
-    await crowdsale.addMilestone(15, 25);
-    await crowdsale.addMilestone(15, 20);
-    await crowdsale.addMilestone(15, 15);
-    await crowdsale.addMilestone(15, 10);
-    await crowdsale.addMilestone(15, 5);
-    await crowdsale.addMilestone(15, 0);
-    await crowdsale.setWallet(this.wallet);
+    await crowdsale.setMinInvestedLimit(this.minInvestedLimit);      
     await crowdsale.addWallet(this.BountyTokensWallet, this.BountyTokensPercent);
-    await crowdsale.addWallet(this.AdvisorsTokensWallet, this.AdvisorsTokensPercent);
+    await crowdsale.addWallet(this.AdvisorsTokensWallet, this.AdvisorsTokensPercent);    
     await crowdsale.addWallet(this.FoundersTokensWallet, this.FoundersTokensPercent);
-    await crowdsale.addWallet(this.CompanyTokensWallet, this.CompanyTokensPercent);
     await crowdsale.setPercentRate(this.PercentRate);
-    await crowdsale.lockAddress(this.BountyTokensWallet, 30);
+    await crowdsale.setSpecialWallet(specialwallet.address);
+    await specialwallet.setAvailableAfterStart(50);
+    await specialwallet.setEndDate(1546300800);
+    await specialwallet.transferOwnership(crowdsale.address);
   });
 
   it('should accept payments within hardcap', async function () {
