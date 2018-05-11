@@ -26,7 +26,7 @@ contract PreITO is SoftcapFeature, NextSaleAgentFeature, AssembledCommonSale {
 
   function calculateTokens(uint _invested) internal returns(uint) {
     uint tokens = _invested.mul(price).div(1 ether);
-    if(minted > firstBonusTokensLimit) {
+    if(minted <= firstBonusTokensLimit) {
       if(firstBonus > 0) {
         tokens = tokens.add(tokens.mul(firstBonus).div(percentRate));
       }
