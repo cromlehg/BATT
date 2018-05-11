@@ -80,11 +80,11 @@ contract SpecialWallet is PercentRateFeature {
         uint first = initialBalance.mul(availableAfterStart).div(percentRate);
         uint secondInitialBalance = initialBalance.sub(first);
         uint quaters = 4;
-        uint allQuaters = quaters.sub(startQuater);
-        uint value = secondInitialBalance.div(allQuaters).mul(startQuater.sub(cQuater));  
+        uint allQuaters = quaters.sub(startQuater);        
+        uint value = secondInitialBalance.mul(cQuater.sub(startQuater)).div(allQuaters);         
         uint toWithdraw = first.add(value).sub(withdrawed);
         to.transfer(toWithdraw);
-        withdrawed = withdrawed.add(toWithdraw);
+        withdrawed = withdrawed.add(toWithdraw);        
       } else revert();
     }
   }
