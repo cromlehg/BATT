@@ -21,7 +21,8 @@ Each stage has a direct minting function in wei. This is made to support the ext
 1. _Token_ - Token contract
 2. _PreITO_ - PreITO contract
 3. _ITO_ - ITO contract
-4. _Configurator_ - contract with main configuration for production
+4. _SpecialWallet_ - Wallet contract
+5. _Configurator_ - contract with main configuration for production
 
 ### How to manage contract
 To start working with contract you should follow next steps:
@@ -63,6 +64,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 1. _Token_ -
 2. _PreITO_ -
 3. _ITO_ -
+4. _SpecialWallet_ - 
 
 ### Features
 * Manually mint tokens by owner or sale agent at any time until token minting finished. 
@@ -94,3 +96,67 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Start_                       : 
 * _Period_                      : 30 days
 
+
+## Ropsten network configuration 
+
+### Links
+1. _Token_ - https://ropsten.etherscan.io/address/0x9856b0414d395b64ea1a6bd3f309e05b3f08476a
+2. _PreITO_ - https://ropsten.etherscan.io/address/0x9ca762cff2ec1a55273f6b18abcb8948f03dce3d
+3. _ITO_ - https://ropsten.etherscan.io/address/0xb194c529a8f6713387b9e41510239ae719f632ec
+4. _SpecialWallet_ - https://ropsten.etherscan.io/address/0x7f2e3f40069733d4019184106991b76f49ab3110
+
+### Crowdsale stages
+
+#### PreITO
+
+* _Minimal insvested limit_     : 1 ETH
+* _Base price_                  : 1 ETH = 30 000 Tokens
+* _Softcap_                     : 1 ETH
+* _Hardcap_                     : 33 366 ETH
+* _Start_                       : 11 May 2018 00:00:00 GMT
+* _Period_                      : 30 days
+* _Wallet_                      : 0x8fd94be56237ea9d854b23b78615775121dd1e82
+
+##### Bonus system
+* First 30 000 + 100% bonus
+* Other + 50% bonus
+
+##### Purchasers
+
+* 1 ETH => 60000 tokens, gas = 179716
+https://ropsten.etherscan.io/tx/0x44265eab9553f8307d33aba9cb7982f7986fb67f6a7f638ac9897ac3397db3c2
+
+* 1 ETH => 45000 tokens, gas = 63461
+https://ropsten.etherscan.io/tx/0x7cd68029015dc1e96130b47beb9982db303dc51280b37fd056431524f71e73f9
+
+* 0.1 ETH => rejected txn, less then mininal investment limit, gas = 21297
+https://ropsten.etherscan.io/tx/0x233c1ff636101b8f59887738b096146f9fc152246e73359667746393dc8e7f62
+
+##### Service operations
+
+* finish, gas = 95715
+https://ropsten.etherscan.io/tx/0x4cfa99010c3536ed5a507044e002dac73439cafbc4bae0b6c1fc2bad0839685d
+
+#### ITO
+
+* _Minimal insvested limit_     : 1 ETH
+* _Base price_                  : 1 ETH = 30 000 Tokens
+* _Hardcap_                     : 23 000 ETH
+* _Start_                       : 11 May 2018 00:00:00 GMT
+* _Period_                      : 30 days
+* _Bounty tokens wallet_        : 0x8Ba7Aa817e5E0cB27D9c146A452Ea8273f8EFF29
+* _Advisors tokens wallet_      : 0x24a7774d0eba02846580A214eeca955214cA776C
+* _Founders tokens wallet_      : 0xaa8ed6878a202eF6aFC518a64D2ccB8D73f1f2Ca
+* _Bounty tokens percent_       : 1%
+* _Advisors tokens percent_     : 1%
+* _Founders tokens percent_     : 8%
+
+##### Purchasers
+
+* 1 ETH => 30000 tokens, gas = 93944
+https://ropsten.etherscan.io/tx/0x57d9f6566a2cf8f6feb800096e5b58e06904620fa6a38fb8b4d0e93fb5b0116a
+
+##### Service operations
+
+* finish, gas = 393668
+https://ropsten.etherscan.io/tx/0xb63bf6259861e57dbf538f7eeb4fde23436897df62ce0ba92b6f01e54cb133b4
