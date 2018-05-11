@@ -20,6 +20,9 @@ contract PreITO {
   function transferOwnership(address newOwner) public;
   function setNextSaleAgent(address newICO) public;
   function setSpecialWallet(address addrSpecialWallet) public;
+  function setFirstBonusTokensLimit(uint _tokens) public;
+  function setFirstBonus(uint newFirstBonus) public;
+  function setSecondBonus(uint newSecondBonus) public;
 }
 
 contract ITO {
@@ -72,9 +75,9 @@ contract TestConfigurator is Ownable {
 
     preITO.setStart(1525996800);
     preITO.setPeriod(30);
-    PreITO.setPrice(30000000000000000000000);
-    PreITO.setMinInvestedLimit(1000000000000000000);
-    PreITO.setSpecialWallet(specialWallet);
+    preITO.setPrice(30000000000000000000000);
+    preITO.setMinInvestedLimit(1000000000000000000);
+    preITO.setSpecialWallet(specialWallet);
     preITO.setSoftcap(1000000000000000000);
     preITO.setHardcap(33366000000000000000000);
     preITO.setFirstBonus(100);
