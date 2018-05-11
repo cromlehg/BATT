@@ -59,7 +59,7 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
   });
 
   it('should accept payments after start', async function () {
-    const start = await crowdsale.start();
+    //const start = await crowdsale.start();
     await crowdsale.setStart(latestTime() - duration.seconds(10));
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.fulfilled;
   });

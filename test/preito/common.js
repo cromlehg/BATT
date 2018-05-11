@@ -27,7 +27,7 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     specialwallet = await SpecialWallet.new();
     await token.setSaleAgent(crowdsale.address);
     await crowdsale.setToken(token.address);
-    await crowdsale.setStart(this.start);
+    await crowdsale.setStart(latestTime());
     await crowdsale.setPeriod(this.period);
     await crowdsale.setPrice(this.price);
     await crowdsale.setSoftcap(this.softcap);
@@ -57,12 +57,12 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
   });
 
   it('should reject payments before start', async function () {
-    await crowdsale.setStart(this.start + duration.seconds(1));
+    await crowdsale.setStart(latestTime() + duration.seconds(10));
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.rejectedWith(EVMRevert);
   });
 
   it('should accept payments after start', async function () {
-    await increaseTimeTo(this.start + duration.seconds(2));
+    await crowdsale.setStart(latestTime() - duration.seconds(10));
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.fulfilled;
   });
 
@@ -80,7 +80,8 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
   });
 
   it('should reject payments after end', async function () {
-    await increaseTimeTo(this.afterEnd);
+    const end = await crowdsale.endSaleDate();
+    await increaseTimeTo(end + duration.seconds(10));
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.rejectedWith(EVMRevert);
   });
   
