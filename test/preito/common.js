@@ -39,6 +39,10 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     await specialwallet.setAvailableAfterStart(50);
     await specialwallet.setEndDate(1546300800);
     await specialwallet.transferOwnership(crowdsale.address);
+    await crowdsale.setNextSaleAgent(wallets[10]);
+    await crowdsale.setFirstBonus(100);
+    await crowdsale.setFirstBonusTokensLimit(30000000000000000000000000);
+    await crowdsale.setSecondBonus(50);
   });
 
   it('crowdsale should be a saleAgent for token', async function () {
@@ -72,7 +76,7 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
   it('should assign tokens to sender', async function () {
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]});
     const balance = await token.balanceOf(wallets[3]);
-    balance.should.be.bignumber.equal(this.price.times(1));
+    balance.should.be.bignumber.equal(this.price.times(2));
   });
 
   it('should reject payments after end', async function () {

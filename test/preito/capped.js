@@ -38,6 +38,10 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     await specialwallet.setAvailableAfterStart(50);
     await specialwallet.setEndDate(1546300800);
     await specialwallet.transferOwnership(crowdsale.address);
+    await crowdsale.setNextSaleAgent(wallets[10]);
+    await crowdsale.setFirstBonus(100);
+    await crowdsale.setFirstBonusTokensLimit(30000000000000000000000000);
+    await crowdsale.setSecondBonus(50);
   });
 
   it('should accept payments within hardcap', async function () {

@@ -38,13 +38,32 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     await specialwallet.setAvailableAfterStart(50);
     await specialwallet.setEndDate(1546300800);
     await specialwallet.transferOwnership(crowdsale.address);
+    await crowdsale.setNextSaleAgent(wallets[10]);
+    await crowdsale.setFirstBonus(100);
+    await crowdsale.setFirstBonusTokensLimit(30000000000000000000000000);
+    await crowdsale.setSecondBonus(50);
+  });
+
+
+  it('should add 100% bonus for first 30 000 000 tokens', async function () {
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[1]});
+    const balance = await token.balanceOf(wallets[1]);
+    balance.should.bignumber.equal(this.price.times(2));
+  });
+
+  it('should add 50% bonus after 30 000 000 minted tokens', async function () {
+    const owner = await crowdsale.owner();
+    await crowdsale.mintTokensExternal(wallets[2], 31000000000000000000000000, {from: owner});
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[3]});
+    const balance = await token.balanceOf(wallets[3]);
+    balance.should.bignumber.equal(this.price.times(1.5));
   });
 
   it('should mintTokensByETHExternal by owner', async function () {
     const owner = await crowdsale.owner();
     await crowdsale.mintTokensByETHExternal(wallets[4], ether(1), {from: owner}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[4]);
-    balance.should.bignumber.equal(this.price.times(1));
+    balance.should.bignumber.equal(this.price.times(2));
   });
 
   it('should mintTokensByETHExternal by  Direct Mint Agend', async function () {
@@ -52,21 +71,21 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     await crowdsale.setDirectMintAgent(wallets[2], {from: owner});
     await crowdsale.mintTokensByETHExternal(wallets[5], ether(1), {from: wallets[2]}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[5]);
-    balance.should.bignumber.equal(this.price.times(1));
+    balance.should.bignumber.equal(this.price.times(2));
   });
 
   it('should mintTokensExternal by owner', async function () {
     const owner = await crowdsale.owner();
-    await crowdsale.mintTokensExternal(wallets[4], tokens(100), {from: owner}).should.be.fulfilled;
-    const balance = await token.balanceOf(wallets[4]);
+    await crowdsale.mintTokensExternal(wallets[6], tokens(100), {from: owner}).should.be.fulfilled;
+    const balance = await token.balanceOf(wallets[6]);
     balance.should.bignumber.equal(tokens(100));
   });
 
   it('should mintTokensExternal by Direct Mint Agent', async function () {
     const owner = await crowdsale.owner();
     await crowdsale.setDirectMintAgent(wallets[3], {from: owner});
-    await crowdsale.mintTokensExternal(wallets[6], tokens(100), {from: wallets[3]}).should.be.fulfilled;
-    const balance = await token.balanceOf(wallets[6]);
+    await crowdsale.mintTokensExternal(wallets[7], tokens(100), {from: wallets[3]}).should.be.fulfilled;
+    const balance = await token.balanceOf(wallets[7]);
     balance.should.bignumber.equal(tokens(100));
   });
     

@@ -38,6 +38,10 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     await specialwallet.setAvailableAfterStart(50);
     await specialwallet.setEndDate(1546300800);
     await specialwallet.transferOwnership(crowdsale.address);
+    await crowdsale.setNextSaleAgent(wallets[10]);
+    await crowdsale.setFirstBonus(100);
+    await crowdsale.setFirstBonusTokensLimit(30000000000000000000000000);
+    await crowdsale.setSecondBonus(50);
   });
 
   it('should deny refunds before end', async function () {
@@ -84,12 +88,26 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     const investment = this.softcap;
     await crowdsale.sendTransaction({value: investment, from: wallets[3]});
     await increaseTimeTo(latestTime() + this.period);
-    const pre = web3.eth.getBalance(this.wallet);
+    const pre = web3.eth.getBalance(specialwallet.address);
     await crowdsale.finish({from: owner}).should.be.fulfilled;
-    const post = web3.eth.getBalance(this.wallet);
+    const post = web3.eth.getBalance(specialwallet.address);
     const dev = web3.eth.getBalance('0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770');  
     const special = web3.eth.getBalance('0x1D0B575b48a6667FD8E59Da3b01a49c33005d2F1');
     dev.plus(special).should.be.bignumber.equal(ether(8.5));
     post.minus(pre).plus(dev).plus(special).should.be.bignumber.equal(investment);
+  });
+
+  it('should withdraw, but send funds to dev and special wallets just once', async function () {
+    const owner = await crowdsale.owner();
+    const investment = this.softcap;
+    await crowdsale.sendTransaction({value: investment, from: wallets[3]});
+    const pre = web3.eth.getBalance(specialwallet.address);
+    await crowdsale.withdraw({from: owner}).should.be.fulfilled;
+    const post = web3.eth.getBalance(specialwallet.address);
+    post.minus(pre).plus(ether(8.5)).should.be.bignumber.equal(investment);
+    await crowdsale.sendTransaction({value: ether(10), from: wallets[3]});
+    await crowdsale.withdraw({from: owner}).should.be.fulfilled;
+    const post1 = web3.eth.getBalance(specialwallet.address);
+    post1.minus(post).should.be.bignumber.equal(ether(10));
   });
 }
