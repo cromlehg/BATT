@@ -97,7 +97,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Period_                      : 30 days
 
 
-## Ropsten network configuration 
+## Ropsten network configuration #1
 
 ### Links
 1. _Token_ - https://ropsten.etherscan.io/address/0x9856b0414d395b64ea1a6bd3f309e05b3f08476a
@@ -160,3 +160,67 @@ https://ropsten.etherscan.io/tx/0x57d9f6566a2cf8f6feb800096e5b58e06904620fa6a38f
 
 * finish, gas = 393668
 https://ropsten.etherscan.io/tx/0xb63bf6259861e57dbf538f7eeb4fde23436897df62ce0ba92b6f01e54cb133b4
+
+
+## Ropsten network configuration #2
+
+### Links
+1. _Token_ - https://ropsten.etherscan.io/address/0x9dd7def2449db1be9d8a0f36b30db29b68d0d6b8
+2. _PreITO_ - https://ropsten.etherscan.io/address/0x7e08994c20904d19b52bcbbe503f22ccbcf982c6
+3. _ITO_ - https://ropsten.etherscan.io/address/0x8c1786c31692a071c1c51cbdd51c6963efc0af0f
+4. _SpecialWallet_ - https://ropsten.etherscan.io/address/0xd1a0cb13524c94541dd17171b767803ddae0fb6e
+
+### Crowdsale stages
+
+#### PreITO
+
+* _Minimal insvested limit_     : 1 ETH
+* _Base price_                  : 1 ETH = 30 000 Tokens
+* _Softcap_                     : 1 ETH
+* _Hardcap_                     : 33 366 ETH
+* _Start_                       : 14 May 2018 00:00:00 GMT
+* _Period_                      : 30 days
+* _Wallet_                      : 0x8fd94be56237ea9d854b23b78615775121dd1e82
+
+##### Bonus system
+* First 30 000 + 100% bonus
+* Other + 50% bonus
+
+##### Purchasers
+
+* 1 ETH => 60000 tokens, gas = 179716
+https://ropsten.etherscan.io/tx/0xaef5df9deac4458ce41b324d1fc6699e21174d21e7951a23e9ca1e15d6b39e45
+
+##### Service operations
+
+* finish, gas = 70715
+https://ropsten.etherscan.io/tx/0x6b40196e6e59065edfcb25e38d27df1c8ba8dfc8dd8aafbf03f06050c9e59342
+
+#### ITO
+
+* _Minimal insvested limit_     : 1 ETH
+* _Base price_                  : 1 ETH = 30 000 Tokens
+* _Hardcap_                     : 23 000 ETH
+* _Start_                       : 14 May 2018 00:00:00 GMT
+* _Period_                      : 30 days
+* _Bounty tokens wallet_        : 0x8Ba7Aa817e5E0cB27D9c146A452Ea8273f8EFF29
+* _Advisors tokens wallet_      : 0x24a7774d0eba02846580A214eeca955214cA776C
+* _Founders tokens wallet_      : 0xaa8ed6878a202eF6aFC518a64D2ccB8D73f1f2Ca
+* _Bounty tokens percent_       : 1%
+* _Advisors tokens percent_     : 1%
+* _Founders tokens percent_     : 8%
+
+##### Purchasers
+
+* 1 ETH => 30000 tokens, gas = 93944
+https://ropsten.etherscan.io/tx/0xfb148d96f672d4610bc3204ad9d0393e4cf076768fd68a07a592da33c4345086
+
+##### Service operations
+
+* finish, gas = 393668
+https://ropsten.etherscan.io/tx/0x4240bf75894405fb6822a79c63bcdbbac2f54daa29cd1197bc9200cee4e1c6bb
+
+##### SpecialWallet
+
+* withdraw (50% of funds), gas = 54016
+https://ropsten.etherscan.io/tx/0x598ac07ed36359b19e1eecc36b6c635f2cd18971a325d92466b6c2a66eb4cf9a
