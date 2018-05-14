@@ -82,7 +82,7 @@ contract SpecialWallet is PercentRateFeature {
         uint quaters = 4;
         uint allQuaters = quaters.sub(startQuater);        
         uint value = secondInitialBalance.mul(cQuater.sub(startQuater)).div(allQuaters);         
-        uint toTransfer = toTransfer.add(value);
+        toTransfer = toTransfer.add(value);
       }
       toTransfer = toTransfer.sub(withdrawed); 
       to.transfer(toTransfer);

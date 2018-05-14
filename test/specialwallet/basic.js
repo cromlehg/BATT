@@ -39,17 +39,20 @@ export default function (SpecialWallet, accounts) {
     const specialbalance = web3.eth.getBalance(specialwallet.address); 
     await specialwallet.start({from: owner});
 
-    await increaseTimeTo(1536451200);
     const pre = web3.eth.getBalance(accounts[2]);
     await specialwallet.withdraw(accounts[2], {from: owner}).should.be.fulfilled;
+    const post0 = web3.eth.getBalance(accounts[2]);
+    post0.minus(pre).should.be.bignumber.equal(investment.times(0.5));
+
+    await increaseTimeTo(1536451200);
+    await specialwallet.withdraw(accounts[2], {from: owner}).should.be.fulfilled;
     const post = web3.eth.getBalance(accounts[2]);
-    post.minus(pre).should.be.bignumber.equal(investment.times(0.75));    
+    post.minus(post0).should.be.bignumber.equal(investment.times(0.25));    
 
     await increaseTimeTo(1541894400);
-    const pre1 = web3.eth.getBalance(accounts[2]);
     await specialwallet.withdraw(accounts[2], {from: owner}).should.be.fulfilled;
     const post1 = web3.eth.getBalance(accounts[2]);
-    post1.minus(pre1).should.be.bignumber.equal(investment.times(0.25));
+    post1.minus(post).should.be.bignumber.equal(investment.times(0.25));
 
   });
 
