@@ -40,6 +40,7 @@ contract Configurator is Ownable {
     preITO.setFirstBonus(100);
     preITO.setFirstBonusTokensLimit(30000000000000000000000000);
     preITO.setSecondBonus(50);
+    preITO.setMinInvestedLimit(1000000000000000000);
 
     token.setSaleAgent(preITO);
 
@@ -49,6 +50,7 @@ contract Configurator is Ownable {
     ito.addWallet(0x8c76033Dedd13FD386F12787Ab4973BcbD1de2A8, 1);
     ito.addWallet(0x31Dba1B0b92fa23Eec30e2fF169dc7Cc05eEE915, 1);
     ito.addWallet(0x7Ae3c0DdaC135D69cA8E04d05559cd42822ecf14, 8);
+    ito.setMinInvestedLimit(100000000000000000);
 
     preITO.setNextSaleAgent(ito);
 
@@ -61,7 +63,6 @@ contract Configurator is Ownable {
     sale.setPercentRate(100);
     sale.setPeriod(30);
     sale.setPrice(30000000000000000000000);
-    sale.setMinInvestedLimit(1000000000000000000);
     sale.setSpecialWallet(specialWallet);
     sale.setToken(token);
   }

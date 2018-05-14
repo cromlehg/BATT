@@ -34,7 +34,7 @@ Contract manager must call finishMinting after each crowdsale milestone!
 To support external mint service manager should specify address by calling _setDirectMintAgent_. After that specified address can direct mint tokens by calling _mintTokensByETHExternal_ and _mintTokensExternal_.
 
 ### How to invest
-To purchase tokens investor should send ETH (more than minimum 0.1 ETH) to corresponding crowdsale contract.
+To purchase tokens investor should send ETH (more than minimum) to corresponding crowdsale contract.
 Recommended GAS: 250000, GAS PRICE - 21 Gwei.
 
 ### Wallets with ERC20 support
@@ -90,7 +90,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * Other + 50% bonus
 
 #### ITO
-* _Minimal insvested limit_     : 1 ETH
+* _Minimal insvested limit_     : 0.1 ETH
 * _Base price_                  : 1 ETH = 30 000 Tokens
 * _Hardcap_                     : 23 000 ETH
 * _Start_                       : 
