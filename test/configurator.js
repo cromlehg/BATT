@@ -80,10 +80,10 @@ contract('Configurator integration test', function (accounts) {
   });
 
   it ('preITO and ITO should have minimal insvested limit as described in README', async function () {
-    const preitoMinInvest = await ito.minInvestedLimit();
+    const preitoMinInvest = await preito.minInvestedLimit();
     preitoMinInvest.should.bignumber.equal(ether(1));
     const itoMinInvest = await ito.minInvestedLimit();
-    itoMinInvest.should.bignumber.equal(ether(1));
+    itoMinInvest.should.bignumber.equal(ether(0.1));
   });
 
   it ('preITO should have wallets as described in README', async function () {
