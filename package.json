@@ -28,7 +28,8 @@
     "flatten-token": "./node_modules/.bin/truffle-flattener ./contracts/Token.sol > ./deploy/Token.sol",
     "flatten-callback": "./node_modules/.bin/truffle-flattener ./contracts/CallbackTest.sol > ./deploy/CallbackTest.sol",
     "flatten-specialwallet": "./node_modules/.bin/truffle-flattener ./contracts/SpecialWallet.sol > ./deploy/SpecialWallet.sol",
-    "flatten-configurator": "./node_modules/.bin/truffle-flattener ./contracts/TestConfigurator.sol > ./deploy/TestConfigurator.sol"
+    "flatten-configurator": "./node_modules/.bin/truffle-flattener ./contracts/TestConfigurator.sol > ./deploy/TestConfigurator.sol",
+    "flatten": "./node_modules/.bin/truffle-flattener ./contracts/Configurator.sol > ./deploy/Contracts.sol"
   },
   "repository": {
     "type": "git",
