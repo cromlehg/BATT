@@ -93,7 +93,7 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     const post = web3.eth.getBalance(specialwallet.address);
     const dev = web3.eth.getBalance('0xEA15Adb66DC92a4BbCcC8Bf32fd25E2e86a2A770');  
     const special = web3.eth.getBalance('0x1D0B575b48a6667FD8E59Da3b01a49c33005d2F1');
-    dev.plus(special).should.be.bignumber.equal(ether(26.5));
+    dev.plus(special).should.be.bignumber.equal(ether(32.5));
     post.minus(pre).plus(dev).plus(special).should.be.bignumber.equal(investment);
   });
 
@@ -104,7 +104,7 @@ export default function (Token, Crowdsale, SpecialWallet, wallets) {
     const pre = web3.eth.getBalance(specialwallet.address);
     await crowdsale.withdraw({from: owner}).should.be.fulfilled;
     const post = web3.eth.getBalance(specialwallet.address);
-    post.minus(pre).plus(ether(26.5)).should.be.bignumber.equal(investment);
+    post.minus(pre).plus(ether(32.5)).should.be.bignumber.equal(investment);
     await crowdsale.sendTransaction({value: ether(10), from: wallets[3]});
     await crowdsale.withdraw({from: owner}).should.be.fulfilled;
     const post1 = web3.eth.getBalance(specialwallet.address);
